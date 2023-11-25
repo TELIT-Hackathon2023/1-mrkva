@@ -86,6 +86,10 @@
   </div>
 </section>
   </v-card>
+  <footer class="footer">
+    <p>© 2023</p>
+  </footer>
+  
 </template>
 
 <script>
@@ -134,6 +138,13 @@ export default {
 </script>
 
 <style scoped>
+.v-app-bar-nav-icon {
+  padding-left: 10px;
+}
+
+.v-toolbar-title {
+  padding-left: 20px;
+}
 .cards-container {
   display: flex;
   justify-content: space-around;
@@ -216,7 +227,10 @@ export default {
   background: #fff; /* Same as v-card color */
 }
 
-
+.summary-improvements-wrapper {
+  display: block; /* Change from flex to block to stack divs vertically */
+  padding: 0 200px; /* Maintain the horizontal padding as needed */
+}
 
 /* Since they are no longer side by side, you can remove justify-content and align-items */
 .summary-container,
@@ -271,5 +285,16 @@ section {
   .image-container {
     order: -1; /* This will move the image above the text on smaller screens */
   }
+}
+
+.footer {
+  background-color:#E91E63;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 </style>
