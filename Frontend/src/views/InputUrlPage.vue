@@ -23,7 +23,14 @@
     </v-toolbar>
   </v-card>
   
-  <img src="@/assets/logoIQ.png" alt="T-Systems Logo" style="height: 30px; width: 30px;"/>
+  <div id="app">
+    <div class="search-wrapper">
+      <div class="search-container">
+        <input v-model="searchQuery" type="text" placeholder="Insert url..." class="search-input">
+        <button class="search-button" @click="performSearch">Analyze</button>
+      </div>
+    </div>
+  </div>
   
 </template>
   
@@ -35,35 +42,53 @@
   </script>
   
   <style scoped>
-  #app {
-    text-align: center;
-  }
-  
-  .top-bar {
-    background-color: #e20074; /* Telecom magenta color */
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .logo {
-    width: 100px; /* Adjust as needed */
-    height: auto;
-  }
-  
-  .main-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .search-input {
-    width: 60%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-  }
-  </style>
-  
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white; /* Dark background */
+}
+
+.search-wrapper {
+  width: 100%; /* Take full width */
+  height: 100%; /* Take full height */
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.search-container {
+  display: flex;
+  border: 1px solid #5f6368; /* Light grey border */
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.search-input {
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+  outline: none;
+  flex-grow: 1;
+}
+
+.search-input::placeholder {
+  color: #9aa0a6; /* Placeholder text color */
+}
+
+.search-button {
+  border: none;
+  padding: 12px 24px;
+  background-color: #5f6368; /* Light grey background */
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-button:hover {
+  background-color: #3c4043; /* Slightly darker grey on hover */
+}
+</style>
