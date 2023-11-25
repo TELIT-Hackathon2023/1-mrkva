@@ -1,19 +1,19 @@
 import { createWebHistory, createRouter } from "vue-router";
-import LoginPage from "@/views/LoginPage.vue";
-import strankyPage from "@/views/strankyPage.vue";
+import InputUrlPage from "@/views/InputUrlPage.vue";
+import DetailReportPage from "@/views/DetailReportPage.vue";
 
 
 
 const routes = [
   {
     path: "/",
-    name: "LoginPage",
-    component: LoginPage,
+    name: "InputUrlPage",
+    component: InputUrlPage,
   },
   {
-    path: "/stranky",
-    name: "strankyPage",
-    component: strankyPage,
+    path: "/detail",
+    name: "DetailReportPage",
+    component: DetailReportPage,
   }
 ];
 
