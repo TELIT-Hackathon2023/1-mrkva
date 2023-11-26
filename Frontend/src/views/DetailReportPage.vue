@@ -1,5 +1,5 @@
 <template>
-  <v-card color="white" flat height="1000px" rounded="0">
+  <v-card color="white" flat rounded="0">
     <v-toolbar color="pink" density="compact">
       <v-app-bar-nav-icon>
         <img
@@ -56,7 +56,13 @@
         <img :src="imageSource" alt="Descriptive Alt Text" />
       </div>
 
+      
+
     </section>
+
+    <section class="iframe-section">
+  <iframe :src="htmlFileUrl"></iframe>
+</section>
 
   </v-card>
   <footer class="footer">
@@ -75,11 +81,14 @@ export default {
       personas: [],
       scoreValue: 0,
       currentUrl: '',
+      loadedHtml: '',
+      htmlFileUrl: ''
     };
   },
   created() {
     this.fetchData();
   },
+ 
   computed: {
   imageSource() {
     switch (this.currentUrl) {
@@ -101,6 +110,8 @@ export default {
       // Retrieve the URL from the route query parameter
       this.currentUrl = this.$route.query.url;
 
+      this.setHtmlFileUrl(this.currentUrl);
+
       // Perform the API call using the received URL
       axios.get(`http://127.0.0.1:8000/myapp/test-api/?url=${encodeURIComponent(this.currentUrl)}`)
         .then(response => {
@@ -112,6 +123,24 @@ export default {
         .catch(error => {
           console.error('There was an error!', error);
         });
+    },
+    setHtmlFileUrl(url) {
+      switch (url) {
+        case 'https://gymbeam.sk/':
+          this.htmlFileUrl = '/gymbeam.html';
+          break;
+        case 'https://kpi.fei.tuke.sk/':
+          this.htmlFileUrl = '/kpi.html';
+          break;
+        case 'https://www.deutschetelekomitsolutions.sk/':
+          this.htmlFileUrl = '/telekom.html';
+          break;
+        case 'https://www.booking.com/':
+          this.htmlFileUrl = '/booking.html';
+          break;
+        default:
+          this.htmlFileUrl = '/default.html'; // A default file or an empty string if no default
+      }
     }
   }
 }
@@ -279,12 +308,50 @@ export default {
   }
 
   .footer {
-    background-color: #E91E63;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    left: 0;
-    bottom: 0;
+  background-color: #E91E63;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative; /* Change this to relative if it's currently fixed or absolute */
+  width: 100%;
+}
+
+  .iframe-section {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px; /* Add space at the top */
+  margin-bottom: 40px; /* Add space at the bottom */
+}
+
+iframe {
+  width: 100%;
+  height: 600px; /* Adjust height as necessary */
+  border: none;
+}
+
+/* Adjust existing CSS for content-section */
+.content-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 100px;
+  flex-wrap: wrap; /* Ensures that elements wrap on smaller screens */
+}
+
+@media (max-width: 768px) {
+  /* Adjust for smaller screens */
+  .content-section, .iframe-section {
+    flex-direction: column;
+    padding: 0 20px;
     width: 100%;
   }
+
+  .text-container, .image-container {
+    width: 100%;
+  }
+
+  /* Adjust iframe section for smaller screens */
+  .iframe-section {
+    width: 100%;
+  }
+}
 </style>
