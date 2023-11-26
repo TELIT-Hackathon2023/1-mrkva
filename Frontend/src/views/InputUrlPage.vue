@@ -2,7 +2,11 @@
   <v-card color="white" flat height="200px" rounded="0">
     <v-toolbar color="pink" density="compact">
       <v-app-bar-nav-icon>
-        <img src="@/assets/tsystems2.png" alt="T-Systems Logo" style="height: 30px; width: 30px;"/>
+        <img
+          src="@/assets/tsystems2.png"
+          alt="T-Systems Logo"
+          style="height: 30px; width: 30px"
+        />
       </v-app-bar-nav-icon>
 
       <v-toolbar-title>UX Analyzer</v-toolbar-title>
@@ -22,37 +26,45 @@
       </v-btn>
     </v-toolbar>
   </v-card>
+
   
+
   <div id="app">
+    <div class="logo-container">
+    <img src="@/assets/Component 1.png" alt="T-Systems Logo" class="logo" />
+  </div>
     <div class="search-wrapper">
       <div class="search-container">
-        <input v-model="searchQuery" type="text" placeholder="Insert url..." class="search-input">
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Insert url..."
+          class="search-input"
+        />
         <button class="search-button" @click="performSearch">Analyze</button>
       </div>
     </div>
   </div>
-  
 </template>
-  
-  <script>
-  export default {
-    name: 'GoogleMainPage'
-    // Add your component logic here
-  }
-  </script>
-  
-  <style scoped>
+
+<script>
+export default {
+  name: "GoogleMainPage",
+  // Add your component logic here
+};
+</script>
+
+<style scoped>
 #app {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: white; /* Dark background */
+  flex-direction: column;
 }
 
 .search-wrapper {
   width: 100%; /* Take full width */
-  height: 100%; /* Take full height */
   display: flex; /* Use Flexbox */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
@@ -91,4 +103,10 @@
 .search-button:hover {
   background-color: #3c4043; /* Slightly darker grey on hover */
 }
+
+.logo-container {
+  padding-left: 95px;
+}
+
+
 </style>
