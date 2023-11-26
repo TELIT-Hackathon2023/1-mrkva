@@ -102,6 +102,7 @@ export default {
 
 
 <style scoped>
+ 
   .v-app-bar-nav-icon {
     padding-left: 10px;
   }
@@ -135,7 +136,9 @@ export default {
   }
 
   .lists {
-    padding: 0 90px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 0 60px;
   }
 
   .search-wrapper {
@@ -215,7 +218,7 @@ export default {
   .content-section {
     display: flex;
     justify-content: space-around;
-    padding: 0 50px;
+    padding: 0 100px;
   }
 
   .text-container {
