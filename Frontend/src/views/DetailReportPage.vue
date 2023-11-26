@@ -2,11 +2,14 @@
   <v-card color="white" flat rounded="0">
     <v-toolbar color="pink" density="compact">
       <v-app-bar-nav-icon>
-        <img
-          src="@/assets/tsystems2.png"
-          alt="T-Systems Logo"
-          style="height: 30px; width: 30px"
-        />
+        <router-link :to="'/'">
+  <img
+    src="@/assets/tsystems2.png"
+    alt="T-Systems Logo"
+    style="height: 30px; width: 30px"
+  />
+</router-link>
+
       </v-app-bar-nav-icon>
 
       <v-toolbar-title>UX Analyzer</v-toolbar-title>
