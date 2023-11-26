@@ -53,8 +53,8 @@
       </div>
 
       <div class="image-container">
-  <img src="@/assets/logoIQ.png" alt="Descriptive Alt Text" />
-</div>
+        <img :src="imageSource" alt="Descriptive Alt Text" />
+      </div>
 
     </section>
 
@@ -74,18 +74,35 @@ export default {
       improvementsPoints: [],
       personas: [],
       scoreValue: 0,
+      currentUrl: '',
     };
   },
   created() {
     this.fetchData();
   },
+  computed: {
+  imageSource() {
+    switch (this.currentUrl) {
+      case 'https://gymbeam.sk/':
+        return '/gymbeam.png';
+      case 'https://kpi.fei.tuke.sk/':
+        return '/tuke.png';
+      case 'https://www.deutschetelekomitsolutions.sk/':
+        return '/deutschetelekomsolutions.png';
+      case 'https://www.booking.com/':
+        return '/booking.png';
+      default:
+        return '/Component 1.png';
+    }
+  }
+},
   methods: {
     fetchData() {
       // Retrieve the URL from the route query parameter
-      const urlToAnalyze = this.$route.query.url;
+      this.currentUrl = this.$route.query.url;
 
       // Perform the API call using the received URL
-      axios.get(`http://127.0.0.1:8000/myapp/test-api/?url=${encodeURIComponent(urlToAnalyze)}`)
+      axios.get(`http://127.0.0.1:8000/myapp/test-api/?url=${encodeURIComponent(this.currentUrl)}`)
         .then(response => {
           this.scoreValue = response.data.ux_score;
           this.summary = response.data.summary;
