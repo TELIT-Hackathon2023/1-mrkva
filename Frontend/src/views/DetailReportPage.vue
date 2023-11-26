@@ -81,7 +81,11 @@ export default {
   },
   methods: {
     fetchData() {
-      axios.get('http://127.0.0.1:8000/myapp/test-api/?url=https://gymbeam.sk/')
+      // Retrieve the URL from the route query parameter
+      const urlToAnalyze = this.$route.query.url;
+
+      // Perform the API call using the received URL
+      axios.get(`http://127.0.0.1:8000/myapp/test-api/?url=${encodeURIComponent(urlToAnalyze)}`)
         .then(response => {
           this.scoreValue = response.data.ux_score;
           this.summary = response.data.summary;
@@ -95,6 +99,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
   .v-app-bar-nav-icon {

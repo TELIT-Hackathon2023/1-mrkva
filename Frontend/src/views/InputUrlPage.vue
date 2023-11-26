@@ -8,18 +8,14 @@
           style="height: 30px; width: 30px"
         />
       </v-app-bar-nav-icon>
-
       <v-toolbar-title>UX Analyzer</v-toolbar-title>
-
     </v-toolbar>
   </v-card>
 
-  
-
   <div id="app">
     <div class="logo-container">
-    <img src="@/assets/Component 1.png" alt="T-Systems Logo" class="logo" />
-  </div>
+      <img src="@/assets/Component 1.png" alt="T-Systems Logo" class="logo" />
+    </div>
     <div class="search-wrapper">
       <div class="search-container">
         <input
@@ -37,7 +33,17 @@
 <script>
 export default {
   name: "GoogleMainPage",
-  // Add your component logic here
+  data() {
+    return {
+      searchQuery: '', // Holds the search query
+    };
+  },
+  methods: {
+    performSearch() {
+      // Navigate to /detail page with searchQuery as a parameter
+      this.$router.push({ path: '/detail', query: { url: this.searchQuery } });
+    },
+  },
 };
 </script>
 
@@ -68,7 +74,7 @@ export default {
   border: none;
   padding: 12px 24px;
   font-size: 16px;
-  color: white;
+  color: #E10075;
   background-color: transparent;
   outline: none;
   flex-grow: 1;
